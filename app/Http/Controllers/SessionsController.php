@@ -15,15 +15,8 @@ class SessionsController extends Controller
     
     public function create()
     {
-        $archives = Post::SelectRaw('year(created_at)year,monthname(created_at)month,
-        count(*) published ')
         
-        ->groupBy('year','month')
-
-        ->orderByRaw('min(created_at) desc')
-        ->get()
-        ->toArray();
-        return view('sessions.create',compact('archives'));  
+        return view('sessions.create');  
     }
  
     
