@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
+use App\Post;
 class SessionsController extends Controller
 {
     public function __construct(){
@@ -15,7 +15,15 @@ class SessionsController extends Controller
     
     public function create()
     {
-        return view('sessions.create');  
+        $archives = Post::SelectRaw('year(created_at)year,monthname(created_at)month,
+        count(*) published ')
+        
+        ->groupBy('year','month')
+
+        ->orderByRaw('min(created_at) desc')
+        ->get()
+        ->toArray();
+        return view('sessions.create',compact('archives'));  
     }
  
     
