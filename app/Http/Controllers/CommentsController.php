@@ -17,7 +17,7 @@ public function index()
     
 public function create()
     {
-        
+         
     }
 
     
@@ -26,7 +26,13 @@ public function create()
         $this->validate(request(),[
             "body"=> "required|min:2"
         ]);
-        $post->addComments(request('body'));
+
+        Comment::create([
+             "body"=> request('body'),
+            "post_id"=>$post->id,
+            "user_id"=>$post->user->id
+    ]);
+        //$post->addComments(request('body'));
        
 
         return back();

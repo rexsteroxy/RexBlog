@@ -32,7 +32,7 @@
 				</ul>
 				
 			</div>
-		
+		 
 			<div class="card">
 				<div class="card-block">
 					<form action="/posts/{{$post->id}}/comments" method="Post">

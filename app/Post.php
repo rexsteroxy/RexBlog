@@ -15,14 +15,14 @@ class Post extends Model
         return $this->belongsTo(User::class);
     }
     
-    public function addComments($body)
-    {
-        $this->comments()->create(compact('body'));
-        // Comment::create([
-        //     "body"=> $body,
-        //     "post_id"=>$this->id
-        // ]);
-    }
+    // public function addComments($body)
+    // {
+    //     $this->comments()->create(compact('body'));
+    //     // Comment::create([
+    //     //     "body"=> $body,
+    //     //     "post_id"=>$this->id
+    //     // ]);
+    // }
     public static function archives(){
          return static::selectRaw('year(created_at)year,monthname(created_at)month,count(*
          )published ')
