@@ -21,7 +21,7 @@
 
 						<strong>
 						{{ $comment->created_at->diffForHumans()}}:&nbsp
-
+						By {{$comment->user['name']}}  :
 						</strong>
 
 						{{ $comment->body }}
